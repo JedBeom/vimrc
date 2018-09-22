@@ -10,8 +10,11 @@ set autoindent
 set laststatus=2
 set autoread
 set ttimeoutlen=50
+
 set ignorecase
 set incsearch
+set smartcase
+
 au BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \ exe "norm g`\"" |
@@ -23,16 +26,15 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" Plugin 'gmarik/Vundle.vim'
-
-Plugin 'The-NERD-Tree'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'nanotech/jellybeans.vim'
+" Plugin 'nanotech/jellybeans.vim'
 Plugin 'fatih/vim-go'
 Plugin 'dracula/vim'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+" Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
 Plugin 'moorereason/vim-markdownfmt'
@@ -57,12 +59,11 @@ let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
 let g:airline_theme='hybrid'
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
-set background=dark
+" set background=dark
 nmap <silent> <C-D> :NERDTreeToggle<CR>
-map <F1> :!bash<CR>
-set expandtab
 color dracula
 let g:ycm_server_python_interpreter = '/usr/local/bin/python3.7'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:vim_markdown_folding_disabled = 1
 let NERDTreeQuitOnOpen = 1
 au VimEnter *  NERDTree
